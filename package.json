@@ -1,0 +1,23 @@
+{
+  "name": "wasm-forge-monorepo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "The monorepo for WASM-Forge, the pluggable-backend TypeScript library for performance-critical algorithms.",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "test:watch": "pnpm -r --parallel test -- --watch",
+    "bench": "pnpm -r bench"
+  },
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "performance",
+    "typescript",
+    "rust",
+    "zig",
+    "c++"
+  ],
+  "author": "WASM-Forge Community",
+  "license": "MIT"
+}
