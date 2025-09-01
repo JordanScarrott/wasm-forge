@@ -16,6 +16,9 @@
     "test": "vitest run",
     "bench": "vitest bench"
   },
+  "dependencies": {
+    "wasm-forge-levenshtein-rust": "workspace:*"
+  },
   "devDependencies": {
     "typescript": "^5.2.2",
     "vite": "^4.4.5",

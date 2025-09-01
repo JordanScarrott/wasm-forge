@@ -33,17 +33,39 @@ This model allows us to continuously evolve and improve the performance of our l
 
 ## Getting Started
 
+To get started with developing WASM-Forge locally, you'll need to have [Rust](https://www.rust-lang.org/tools/install) and [pnpm](https://pnpm.io/installation) installed.
+
+Once you have the prerequisites, clone the repository and install the dependencies:
+
 ```bash
-pnpm install @wasm-forge/core
+git clone https://github.com/your-username/WASM-Forge.git
+cd WASM-Forge
+pnpm install
 ```
 
-```typescript
-import { levenshtein } from '@wasm-forge/core';
+### Building the WASM modules
 
-const distance = levenshtein('hello', 'world');
-console.log(distance); // Output: 4
+Each reference implementation that is written in a language that compiles to WASM has its own build process. For example, to build the Rust `levenshtein` implementation, navigate to its package directory and run the build command:
+
+```bash
+cd packages/reference-implementations/levenshtein-rust
+pnpm build
 ```
 
----
+This will compile the Rust code into a WASM module and generate the necessary JavaScript bindings in the `pkg` directory.
 
-*This project is in its early stages. We welcome contributors of all levels. Please see our [CONTRIBUTING.md](CONTRIBUTING.md) to get started.*
+### Running Tests and Benchmarks
+
+After building the WASM modules, you can run the test suite and benchmarks from the root of the repository:
+
+```bash
+# Run all tests
+pnpm test
+
+# Run all benchmarks
+pnpm bench
+```
+
+## Contributing
+
+This project is in its early stages. We welcome contributors of all levels. Please see our [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
