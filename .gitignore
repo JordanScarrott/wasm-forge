@@ -1,0 +1,27 @@
+# Node
+node_modules/
+dist/
+build/
+.DS_Store
+*.local
+
+# PNPM
+pnpm-lock.yaml
+.pnpm-debug.log
+
+# Vite / Vitest
+coverage/
+.vitest-cache/
+*.log
+
+# Rust / Cargo
+target/
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
