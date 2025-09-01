@@ -1,0 +1,13 @@
+{
+  "name": "wasm-forge-levenshtein-rust",
+  "version": "0.1.0",
+  "private": true,
+  "main": "pkg/levenshtein_rust.js",
+  "types": "pkg/levenshtein_rust.d.ts",
+  "scripts": {
+    "build": "wasm-pack build --target nodejs --out-dir pkg"
+  },
+  "devDependencies": {
+    "wasm-pack": "^0.12.1"
+  }
+}
