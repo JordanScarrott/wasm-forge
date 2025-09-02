@@ -14,10 +14,12 @@
   "scripts": {
     "build": "vite build",
     "test": "vitest run",
-    "bench": "vitest bench"
+    "bench": "vitest bench",
+    "test:perf": "vitest run tests/performance.test.ts"
   },
   "dependencies": {
-    "wasm-forge-levenshtein-rust": "workspace:*"
+    "@wasm-forge/levenshtein": "workspace:*",
+    "@wasm-forge/trie": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

@@ -1,6 +1,9 @@
-import wasmModule from 'wasm-forge-levenshtein-rust';
+export async function getLevenshtein() {
+  const wasm = await import('@wasm-forge/levenshtein');
+  return wasm.levenshtein;
+}
 
-export function levenshtein(a: string, b: string): number {
-  // All WASM-specific logic and bindings live here.
-  return wasmModule.levenshtein(a, b);
+export async function getTrie() {
+  const wasm = await import('@wasm-forge/trie');
+  return wasm.Trie;
 }

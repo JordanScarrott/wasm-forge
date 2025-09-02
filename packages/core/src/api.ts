@@ -1,12 +1,4 @@
-/**
- * Calculates the Levenshtein distance (edit distance) between two strings.
- * This function is powered by a WebAssembly module for maximum performance.
- * @param a The first string.
- * @param b The second string.
- * @returns A number representing the minimum number of single-character edits
- * (insertions, deletions, or substitutions) required to change string a into string b.
- */
-import { levenshtein as wasmLevenshtein } from './implementations/wasm';
+import { getLevenshtein as getWasmLevenshtein, getTrie as getWasmTrie } from './implementations/wasm';
 
-// By default, the public API exposes the WASM-powered implementation.
-export const levenshtein = wasmLevenshtein;
+export const getLevenshtein = getWasmLevenshtein;
+export const getTrie = getWasmTrie;
