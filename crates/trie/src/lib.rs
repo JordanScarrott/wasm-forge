@@ -42,6 +42,7 @@ impl Trie {
         node.is_end_of_word
     }
 
+    #[wasm_bindgen(js_name = startsWith)]
     pub fn starts_with(&self, prefix: &str) -> bool {
         let mut node = &self.root;
         for ch in prefix.chars() {
