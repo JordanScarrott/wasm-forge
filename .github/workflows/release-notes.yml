@@ -1,0 +1,26 @@
+# File: .github/workflows/release-notes.yml
+
+name: Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository's code so the action can access it
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Create the release and auto-generate the changelog
+      # This action will find the pushed tag (e.g., v1.2.3) and create a
+      # release with that name. The body of the release will be a
+      # generated list of changes.
+      - name: Create GitHub Release with Auto-Generated Notes
+        uses: softprops/action-gh-release@v2
+        with:
+          # This key is what enables the automatic changelog generation
+          generate_release_notes: true
