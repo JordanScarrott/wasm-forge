@@ -4,6 +4,11 @@ name: Publish to npm
 on:
   workflow_dispatch:
 
+  # This adds the new trigger for Git tags
+  push:
+    tags:
+      - 'v*' # e.g., v1.0.0, v0.2.1, etc.
+
 jobs:
   publish-packages:
     runs-on: ubuntu-latest

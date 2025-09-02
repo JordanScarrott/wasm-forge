@@ -1,5 +1,7 @@
 # NPM Publishing Setup
 
+**Important:** This setup is a mandatory prerequisite for the automated, tag-driven release workflow to succeed.
+
 This document outlines the necessary steps to configure your environment for publishing packages to the npm registry using the new "Publish to npm" GitHub Actions workflow.
 
 These steps only need to be completed once.
