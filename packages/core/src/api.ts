@@ -6,7 +6,8 @@
  * @returns A number representing the minimum number of single-character edits
  * (insertions, deletions, or substitutions) required to change string a into string b.
  */
-import { levenshtein as wasmLevenshtein } from './implementations/wasm';
+import { levenshtein as wasmLevenshtein, Trie as WasmTrie } from './implementations/wasm';
 
-// By default, the public API exposes the WASM-powered implementation.
+// By default, a public API exposes the WASM-powered implementation.
 export const levenshtein = wasmLevenshtein;
+export const Trie = WasmTrie;

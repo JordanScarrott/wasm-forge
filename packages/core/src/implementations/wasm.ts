@@ -1,6 +1,7 @@
-import wasmModule from 'wasm-forge-levenshtein-rust';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const levenshteinModule = require('@wasm-forge/levenshtein');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const trieModule = require('@wasm-forge/trie');
 
-export function levenshtein(a: string, b: string): number {
-  // All WASM-specific logic and bindings live here.
-  return wasmModule.levenshtein(a, b);
-}
+export const levenshtein = levenshteinModule.levenshtein;
+export const Trie = trieModule.Trie;
