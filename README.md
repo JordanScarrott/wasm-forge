@@ -65,22 +65,44 @@ To run the entire test suite for all packages, run the following command from th
 npm test
 ```
 
-## Publishing
+## Releasing a New Version
 
-This repository is equipped with a GitHub Actions workflow to automate the publishing of packages to the npm registry.
+This repository uses a tag-driven release process to automate publishing to npm and creating GitHub Releases.
 
-Before you can publish for the first time, you must complete a one-time setup to provide the necessary credentials. Please follow the instructions in the [NPM_TODO.md](NPM_TODO.md) file.
+### Prerequisites
 
-Once the setup is complete, follow these steps to publish a new version of a package:
+Before you can create a new release, you must complete the one-time npm credential setup. Please follow the instructions in [NPM_TODO.md](NPM_TODO.md) to configure the `NPM_TOKEN` repository secret.
 
-1.  **Update Version:** Manually update the `version` field in the `Cargo.toml` file of the package(s) you intend to release (e.g., `crates/trie/Cargo.toml`).
-2.  **Navigate to Actions:** Go to the "Actions" tab in the GitHub repository.
-3.  **Run Workflow:**
-    *   Select the "Publish to npm" workflow from the list on the left.
-    *   Click the "Run workflow" button.
-    *   Confirm by clicking the green "Run workflow" button in the dropdown.
+### Release Process
 
-The workflow will then build the wasm packages and publish them to npm.
+1.  **Update Version Numbers:**
+    Update the `version` field in the `Cargo.toml` file for each package you intend to release.
+
+2.  **Commit the Version Bump:**
+    Commit the changes with a conventional commit message.
+    ```bash
+    # Example commit message
+    git commit -m "chore(release): prepare for v1.2.3"
+    ```
+
+3.  **Tag the Release:**
+    Create a Git tag that matches the new version number and push it to the remote repository.
+
+    ```bash
+    # Create a tag that matches the new version number
+    git tag v1.2.3
+
+    # Push the tag to the remote repository on GitHub
+    git push origin v1.2.3
+    ```
+
+### Automation and Triggering
+
+Pushing any tag that **starts with `v`** (e.g., `v1.2.3`, `v1.2.4-alpha`) will automatically trigger two workflows:
+*   **Publish to npm**: This workflow builds the wasm packages and publishes them to the npm registry.
+*   **Create GitHub Release**: This workflow generates a new GitHub Release with a changelog based on the commits since the last tag.
+
+The automation is based on the tag's naming pattern (`v*`) and does not differentiate between patch, minor, or major version changes. The responsibility to tag at the appropriate time rests with the developer.
 
 ## Contributing
 
