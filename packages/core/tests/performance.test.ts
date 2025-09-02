@@ -1,9 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { Trie as WasmTrie } from '../src/api';
+import { getTrie } from '../src/api';
 import { JSTrie } from '../src/implementations/js/trie';
 
 describe('Trie Performance', () => {
-  it('should run performance tests', () => {
+  it('should run performance tests', async () => {
+    const WasmTrie = await getTrie();
     const words = Array.from({ length: 1000 }, (_, i) => `word${i}`);
 
     console.log('--- Trie Performance Test ---');

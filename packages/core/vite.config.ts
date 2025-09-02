@@ -11,6 +11,9 @@ export default defineConfig({
     },
   },
   plugins: [dts()],
+  optimizeDeps: {
+    include: ['@wasm-forge/levenshtein', '@wasm-forge/trie'],
+  },
   test: {
     // Vitest configuration here
   },

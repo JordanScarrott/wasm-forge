@@ -1,7 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const levenshteinModule = require('@wasm-forge/levenshtein');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const trieModule = require('@wasm-forge/trie');
+export async function getLevenshtein() {
+  const wasm = await import('@wasm-forge/levenshtein');
+  return wasm.levenshtein;
+}
 
-export const levenshtein = levenshteinModule.levenshtein;
-export const Trie = trieModule.Trie;
+export async function getTrie() {
+  const wasm = await import('@wasm-forge/trie');
+  return wasm.Trie;
+}

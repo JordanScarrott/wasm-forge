@@ -1,8 +1,9 @@
-import { Trie } from '../src/api';
+import { getTrie } from '../src/api';
 import { describe, it, expect } from 'vitest';
 
 describe('Wasm Trie', () => {
-  it('should insert and search for words', () => {
+  it('should insert and search for words', async () => {
+    const Trie = await getTrie();
     const trie = new Trie();
     trie.insert('hello');
     trie.insert('world');
@@ -15,7 +16,8 @@ describe('Wasm Trie', () => {
     expect(trie.search('w')).toBe(false);
   });
 
-  it('should check for prefixes', () => {
+  it('should check for prefixes', async () => {
+    const Trie = await getTrie();
     const trie = new Trie();
     trie.insert('apple');
     trie.insert('app');
