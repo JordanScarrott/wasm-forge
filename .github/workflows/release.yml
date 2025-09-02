@@ -1,0 +1,42 @@
+name: Publish to npm
+
+# This key makes the workflow triggerable manually from the GitHub UI.
+on:
+  workflow_dispatch:
+
+jobs:
+  publish-packages:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository's code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install the Rust toolchain and wasm-pack
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      # Step 3: Set up Node.js and configure it for npm publishing
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          # Point to the official npm registry
+          registry-url: 'https://registry.npmjs.org'
+
+      # Step 4: Publish the first package: @wasm-forge/trie
+      # Note: The version in crates/trie/Cargo.toml should be updated before running this.
+      - name: Build and publish @wasm-forge/trie
+        run: wasm-pack publish --access public crates/trie
+        env:
+          # Use the NPM_TOKEN secret for authentication with npm
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Step 5: Publish the second package: @wasm-forge/levenshtein
+      # Note: The version in crates/levenshtein/Cargo.toml should be updated before running this.
+      - name: Build and publish @wasm-forge/levenshtein
+        run: wasm-pack publish --access public crates/levenshtein
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
