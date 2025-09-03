@@ -12,7 +12,12 @@ export default defineConfig({
   },
   plugins: [dts()],
   optimizeDeps: {
-    include: ['@wasm-forge/levenshtein', '@wasm-forge/trie'],
+    include: ['@wasm-forge/levenshtein', '@wasm-forge/trie', '@wasm-forge/radix_trie'],
+  },
+  resolve: {
+    alias: {
+      '@wasm-forge/radix_trie': resolve(__dirname, '../../crates/radix_trie/pkg'),
+    },
   },
   test: {
     // Vitest configuration here

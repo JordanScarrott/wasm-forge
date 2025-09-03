@@ -7,3 +7,8 @@ export async function getTrie() {
   const wasm = await import('@wasm-forge/trie');
   return wasm.Trie;
 }
+
+export async function getRadixTrie() {
+    const wasm = await import('@wasm-forge/radix_trie');
+    return wasm.RadixTrie;
+}

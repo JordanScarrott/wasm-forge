@@ -12,6 +12,7 @@ This is a monorepo that contains a collection of WebAssembly modules. The `crate
 | ------------------------- | ----------------------------------------- | ------------------------- |
 | `@wasm-forge/levenshtein` | Levenshtein distance algorithm            | `@wasm-forge/levenshtein` |
 | `@wasm-forge/trie`        | Trie data structure                       | `@wasm-forge/trie`        |
+| `@wasm-forge/radix_trie`  | Radix Trie data structure                 | `@wasm-forge/radix_trie`  |
 
 ## Usage
 
