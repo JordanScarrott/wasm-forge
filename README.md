@@ -96,11 +96,13 @@ Before you can create a new release, you must complete the one-time npm credenti
     git push origin v1.2.3
     ```
 
-### Automation
+### Automation and Triggering
 
-Pushing a tag prefixed with `v` (e.g., `v1.2.3`) will automatically trigger two workflows:
+Pushing any tag that **starts with `v`** (e.g., `v1.2.3`, `v1.2.4-alpha`) will automatically trigger two workflows:
 *   **Publish to npm**: This workflow builds the wasm packages and publishes them to the npm registry.
 *   **Create GitHub Release**: This workflow generates a new GitHub Release with a changelog based on the commits since the last tag.
+
+The automation is based on the tag's naming pattern (`v*`) and does not differentiate between patch, minor, or major version changes. The responsibility to tag at the appropriate time rests with the developer.
 
 ## Contributing
 
