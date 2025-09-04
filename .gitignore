@@ -17,6 +17,7 @@ coverage/
 # Rust / Cargo
 target/
 Cargo.lock
+pkg/
 
 # IDE
 .vscode/

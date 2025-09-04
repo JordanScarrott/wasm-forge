@@ -15,12 +15,17 @@ Rust is used to write the WebAssembly modules. You can install Rust using `rustu
 
 - **Installation:** [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install)
 
-### 2. wasm-pack
-`wasm-pack` is a tool for building and packaging Rust crates that target WebAssembly.
+### 2. wasm-bindgen-cli
+`wasm-bindgen` is a tool for facilitating high-level interactions between Wasm modules and JavaScript.
 
-- **Installation:** [https://rustwasm.github.io/wasm-pack/installer/](https://rustwasm.github.io/wasm-pack/installer/)
+- **Installation:** [https://rustwasm.github.io/wasm-bindgen/reference/cli.html](https://rustwasm.github.io/wasm-bindgen/reference/cli.html)
 
-### 3. Node.js
+### 3. binaryen
+Binaryen is a compiler and toolchain infrastructure library for WebAssembly. We use it for `wasm-opt`.
+
+- **Installation:** [https://github.com/WebAssembly/binaryen](https://github.com/WebAssembly/binaryen)
+
+### 4. Node.js
 Node.js is required to run the Javascript/Typescript parts of the project.
 
 - **Installation:** [https://nodejs.org/en/download/](https://nodejs.org/en/download/)

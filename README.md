@@ -38,7 +38,11 @@ main();
 
 ## Development
 
-To get started with developing Wasm-Forge locally, you'll need to have [Rust](https://www.rust-lang.org/tools/install) and [pnpm](https://pnpm.io/installation) installed.
+To get started with developing Wasm-Forge locally, you'll need to have the following installed:
+- [Rust](https://www.rust-lang.org/tools/install)
+- [pnpm](https://pnpm.io/installation)
+- [wasm-bindgen-cli](https://rustwasm.github.io/wasm-bindgen/reference/cli.html)
+- [binaryen](https://github.com/WebAssembly/binaryen) (for `wasm-opt`)
 
 Once you have the prerequisites, clone the repository and install the dependencies:
 
