@@ -73,10 +73,6 @@ npm test
 
 This repository uses a tag-driven release process to automate publishing to npm and creating GitHub Releases.
 
-### Prerequisites
-
-Before you can create a new release, you must complete the one-time npm credential setup. Please follow the instructions in [NPM_TODO.md](NPM_TODO.md) to configure the `NPM_TOKEN` repository secret.
-
 ### Release Process
 
 1.  **Update Version Numbers:**
