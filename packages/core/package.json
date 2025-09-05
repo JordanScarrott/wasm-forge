@@ -1,6 +1,7 @@
 {
-  "name": "wasm-forge-core",
+  "name": "@wasm-forge/core",
   "version": "0.1.0",
+  "private": true,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,8 +19,8 @@
     "test:perf": "vitest run tests/performance.test.ts"
   },
   "dependencies": {
-    "wasm-forge-levenshtein": "workspace:*",
-    "wasm-forge-trie": "workspace:*"
+    "@wasm-forge/levenshtein": "workspace:*",
+    "@wasm-forge/trie": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
