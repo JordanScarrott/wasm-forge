@@ -26,7 +26,7 @@ jobs:
         run: |
           cargo install wasm-bindgen-cli
 
-      # Step 3: Set up Node.js and configure it for npm publishing
+      # Step 3: Set up Node.js and pnpm
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -34,22 +34,20 @@ jobs:
           # Point to the official npm registry
           registry-url: 'https://registry.npmjs.org'
 
-      # Step 4: Build, package, and publish @wasm-forge/trie
-      - name: Build and package @wasm-forge/trie
-        run: |
-          cargo build --release --target wasm32-unknown-unknown -p trie --target-dir ./crates/trie/target
-          wasm-bindgen --target web --out-dir ./crates/trie/pkg ./crates/trie/target/wasm32-unknown-unknown/release/trie.wasm
-      - name: Publish @wasm-forge/trie
-        run: npm publish --access public ./crates/trie
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Step 4: Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      # Step 5: Build, package, and publish @wasm-forge/levenshtein
-      - name: Build and package @wasm-forge/levenshtein
-        run: |
-          cargo build --release --target wasm32-unknown-unknown -p levenshtein --target-dir ./crates/levenshtein/target
-          wasm-bindgen --target web --out-dir ./crates/levenshtein/pkg ./crates/levenshtein/target/wasm32-unknown-unknown/release/levenshtein.wasm
-      - name: Publish @wasm-forge/levenshtein
-        run: npm publish --access public ./crates/levenshtein
+      # Step 5: Install dependencies
+      - name: Install dependencies
+        run: pnpm install
+
+      # Step 6: Build all packages
+      - name: Build packages
+        run: pnpm build
+
+      # Step 7: Publish wasm-forge
+      - name: Publish wasm-forge
+        run: npm publish --access public ./packages/wasm-forge
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

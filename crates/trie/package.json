@@ -1,6 +1,7 @@
 {
-  "name": "wasm-forge-trie",
+  "name": "@wasm-forge/trie",
   "version": "0.1.0",
+  "private": true,
   "files": [
     "pkg"
   ],
