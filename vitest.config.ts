@@ -3,7 +3,7 @@ import path from 'path';
 
 export default defineConfig({
   test: {
-    include: ['packages/core/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    include: ['{tests,packages/core/tests}/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
   },
   resolve: {
     alias: {
