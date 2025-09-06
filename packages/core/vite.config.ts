@@ -12,6 +12,6 @@ export default defineConfig({
   },
   plugins: [dts()],
   test: {
-    environment: 'node',
+    // Vitest configuration here
   },
 });

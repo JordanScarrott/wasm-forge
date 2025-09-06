@@ -1,10 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { getTrie } from '../src/api';
-import { JSTrie } from '../src/implementations/js/trie';
+import { Trie } from './crates/trie/pkg-test/trie.js';
 
 describe('Trie Performance', () => {
-  it('should run performance tests', async () => {
-    const WasmTrie = await getTrie();
+  it('should run performance tests', () => {
+    const WasmTrie = Trie;
     const words = Array.from({ length: 1000 }, (_, i) => `word${i}`);
 
     console.log('--- Trie Performance Test ---');
@@ -17,29 +16,12 @@ describe('Trie Performance', () => {
     }
     console.timeEnd('WasmTrie insert');
 
-    // JSTrie insert
-    const jsTrie = new JSTrie();
-    console.time('JSTrie insert');
-    for (const word of words) {
-      jsTrie.insert(word);
-    }
-    console.timeEnd('JSTrie insert');
-
-    console.log('\n');
-
     // WasmTrie search
     console.time('WasmTrie search');
     for (const word of words) {
       wasmTrie.search(word);
     }
     console.timeEnd('WasmTrie search');
-
-    // JSTrie search
-    console.time('JSTrie search');
-    for (const word of words) {
-      jsTrie.search(word);
-    }
-    console.timeEnd('JSTrie search');
 
     console.log('---------------------------\n');
     expect(true).toBe(true);

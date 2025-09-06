@@ -1,4 +1,3 @@
 packages:
   - 'packages/*'
   - 'crates/*'
-  - '!packages/core'
