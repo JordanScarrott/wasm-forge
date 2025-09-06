@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "main": "./pkg/levenshtein.js",
+  "module": "./pkg/levenshtein.js",
   "types": "./pkg/levenshtein.d.ts",
   "files": [
     "pkg"

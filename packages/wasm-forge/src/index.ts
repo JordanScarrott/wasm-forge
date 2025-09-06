@@ -1,2 +1,2 @@
-export * from '@wasm-forge/levenshtein/pkg';
-export * from '@wasm-forge/trie/pkg';
+export * from '@wasm-forge/levenshtein';
+export * from '@wasm-forge/trie';
