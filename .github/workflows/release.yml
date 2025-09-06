@@ -22,7 +22,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
-      - name: Install wasm-bindgen
+      - name: Install wasm-bindgen-cli
         run: |
           cargo install wasm-bindgen-cli
 
@@ -44,9 +44,13 @@ jobs:
 
       # Step 6: Build all packages
       - name: Build packages
-        run: pnpm build
+        run: pnpm -r build
 
-      # Step 7: Publish wasm-forge
+      # Step 7: Test all packages
+      - name: Test packages
+        run: pnpm test
+
+      # Step 8: Publish wasm-forge
       - name: Publish wasm-forge
         run: npm publish --access public ./packages/wasm-forge
         env:
