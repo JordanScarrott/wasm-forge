@@ -5,7 +5,7 @@
   "description": "The monorepo for WASM-Forge, the pluggable-backend TypeScript library for performance-critical algorithms.",
   "scripts": {
     "build": "pnpm -r build",
-    "test": "pnpm -r test",
+    "test": "pnpm -r build:test && pnpm -r test",
     "test:watch": "pnpm -r --parallel test -- --watch",
     "bench": "pnpm -r bench"
   },

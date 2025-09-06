@@ -2,18 +2,15 @@
   "name": "@wasm-forge/levenshtein",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "main": "./pkg/levenshtein.js",
+  "types": "./pkg/levenshtein.d.ts",
   "files": [
     "pkg"
   ],
-  "exports": {
-    ".": {
-      "import": "./pkg/levenshtein.js",
-      "require": "./pkg/levenshtein.js",
-      "types": "./pkg/levenshtein.d.ts"
-    }
-  },
   "scripts": {
-    "build": "cargo build --release --target wasm32-unknown-unknown -p levenshtein --target-dir ./target && wasm-bindgen --target nodejs --out-dir pkg ./target/wasm32-unknown-unknown/release/levenshtein.wasm"
+    "build": "wasm-pack build --target web",
+    "build:test": "wasm-pack build --target nodejs"
   },
   "devDependencies": {}
 }

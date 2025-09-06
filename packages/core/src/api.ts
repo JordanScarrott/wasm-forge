@@ -1,4 +1,2 @@
-import { getLevenshtein as getWasmLevenshtein, getTrie as getWasmTrie } from './implementations/wasm';
-
-export const getLevenshtein = getWasmLevenshtein;
-export const getTrie = getWasmTrie;
+// This file is intentionally left blank.
+// The wasm implementations are now imported directly in the tests.

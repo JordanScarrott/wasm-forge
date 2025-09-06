@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { getTrie } from '../src/api';
+import { Trie } from '@wasm-forge/trie';
 import { JSTrie } from '../src/implementations/js/trie';
 
 describe('Trie Performance', () => {
-  it('should run performance tests', async () => {
-    const WasmTrie = await getTrie();
+  it('should run performance tests', () => {
+    const WasmTrie = Trie;
     const words = Array.from({ length: 1000 }, (_, i) => `word${i}`);
 
     console.log('--- Trie Performance Test ---');

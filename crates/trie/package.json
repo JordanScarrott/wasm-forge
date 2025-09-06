@@ -2,18 +2,15 @@
   "name": "@wasm-forge/trie",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "main": "./pkg/trie.js",
+  "types": "./pkg/trie.d.ts",
   "files": [
     "pkg"
   ],
-  "exports": {
-    ".": {
-      "import": "./pkg/trie.js",
-      "require": "./pkg/trie.js",
-      "types": "./pkg/trie.d.ts"
-    }
-  },
   "scripts": {
-    "build": "cargo build --release --target wasm32-unknown-unknown -p trie --target-dir ./target && wasm-bindgen --target nodejs --out-dir pkg ./target/wasm32-unknown-unknown/release/trie.wasm"
+    "build": "wasm-pack build --target web",
+    "build:test": "wasm-pack build --target nodejs"
   },
   "devDependencies": {}
 }
