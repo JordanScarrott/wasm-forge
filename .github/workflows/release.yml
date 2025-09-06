@@ -50,8 +50,14 @@ jobs:
       - name: Test packages
         run: pnpm test
 
-      # Step 8: Publish wasm-forge
-      - name: Publish wasm-forge
-        run: npm publish --access public ./packages/wasm-forge
+      # Step 8: Create and publish a changeset
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # This expects you to have a script called `release` in your
+          # root package.json.
+          publish: pnpm --filter wasm-forge publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
