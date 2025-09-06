@@ -75,6 +75,18 @@ To add a new module (e.g., a new algorithm) to Wasm-Forge, please follow these s
 6.  **Benchmark**: Add a performance test that demonstrates the speed advantage of the Wasm version over the JS version.
 7.  **Submit a PR**: Open a Pull Request for review. Make sure that all tests and benchmarks are passing.
 
+## Making a Change and Releasing
+
+This project uses [Changesets](https://github.com/changesets/changesets) to manage releases. When you make a change that you believe should be included in a release, you need to add a changeset.
+
+After you have committed your code, run the following command:
+```bash
+pnpm changeset
+```
+You will be prompted to select the packages that have been changed, the bump type (major, minor, or patch) for each package, and a summary of the change.
+
+Follow the prompts to generate a new changeset file. This file should be committed along with your code changes. When you create a pull request, the changeset file will be used to automatically update the package versions and changelogs.
+
 ## Code Style
 
 To maintain a consistent code style, we use:
