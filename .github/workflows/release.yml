@@ -59,8 +59,7 @@ jobs:
         with:
           # This expects you to have a script called `release` in your
           # root package.json.
-          publish: pnpm --filter wasm-forge publish --access public
-          token: ${{ secrets.GH_PAT_TOKEN }} # Add this line
+          publish: pnpm --filter wasm-forge publish --access public --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
