@@ -1,13 +1,9 @@
 name: Publish to npm
 
-# This key makes the workflow triggerable manually from the GitHub UI.
 on:
-  workflow_dispatch:
-
-  # This adds the new trigger for Git tags
   push:
-    tags:
-      - 'v*' # e.g., v1.0.0, v0.2.1, etc.
+    branches:
+      - main
 
 jobs:
   release:
