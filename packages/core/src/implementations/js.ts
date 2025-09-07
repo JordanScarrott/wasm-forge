@@ -4,6 +4,10 @@
  * @param b The second string.
  * @returns The Levenshtein distance between a and b.
  */
+import { radixSort as rs } from './js/radixSort';
+
+export const radixSort = rs;
+
 export function levenshtein(a: string, b: string): number {
   const m = a.length;
   const n = b.length;
