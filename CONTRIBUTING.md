@@ -75,17 +75,38 @@ To add a new module (e.g., a new algorithm) to Wasm-Forge, please follow these s
 6.  **Benchmark**: Add a performance test that demonstrates the speed advantage of the Wasm version over the JS version.
 7.  **Submit a PR**: Open a Pull Request for review. Make sure that all tests and benchmarks are passing.
 
-## Making a Change and Releasing
+## Submitting a Change and Creating a Release
 
-This project uses [Changesets](https://github.com/changesets/changesets) to manage releases. When you make a change that you believe should be included in a release, you need to add a changeset.
+This project uses [Changesets](https://github.com/changesets/changesets) to manage the release process. The workflow is designed to be automated and straightforward, ensuring that every contribution is properly versioned and documented. The process involves two main stages: creating a changeset and merging the release PR.
 
-After you have committed your code, run the following command:
+### Stage 1: Creating a Changeset
+
+After you have made your code changes on your feature branch, you need to declare your intent to release by creating a "changeset." This is a small file that captures your intended version bump and a summary of the changes.
+
+To create a changeset, run the following command at the root of the project:
 ```bash
 pnpm changeset
 ```
-You will be prompted to select the packages that have been changed, the bump type (major, minor, or patch) for each package, and a summary of the change.
+This command will launch an interactive CLI that guides you through the following prompts:
 
-Follow the prompts to generate a new changeset file. This file should be committed along with your code changes. When you create a pull request, the changeset file will be used to automatically update the package versions and changelogs.
+1.  **Select Packages**: It will automatically detect which packages have been modified and ask you to confirm. Use the arrow keys and the spacebar to select the packages you intend to release.
+2.  **Choose Version Type**: For each selected package, you will be prompted to choose a version bump type (`major`, `minor`, or `patch`), following the [Semantic Versioning](https://semver.org/) standard.
+3.  **Write a Summary**: Finally, you will be asked to write a concise summary of the changes. This summary will be automatically added to the `CHANGELOG.md` file when the release is published, so make it informative for the end-users.
+
+Once you complete the prompts, a new markdown file will be generated in the `.changeset` directory. This file must be committed to your feature branch along with your code.
+
+### Stage 2: The Release PR
+
+After your feature PR (which includes the changeset file) is reviewed and merged into the `main` branch, our CI/CD pipeline takes over. An automated GitHub Action will detect the new changeset and create a new pull request titled **"Version Packages."**
+
+This PR will contain all the necessary version bumps and updated changelogs based on the changeset files that have been merged since the last release.
+
+### Stage 3: Publishing to npm
+
+Merging the "Version Packages" PR is the final step. This action triggers the final automated workflow, which will:
+
+1.  Publish the newly versioned packages to the npm registry.
+2.  Create a corresponding GitHub Release, including a detailed changelog.
 
 ## Code Style
 
