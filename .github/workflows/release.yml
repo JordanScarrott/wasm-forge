@@ -53,13 +53,22 @@ jobs:
         run: pnpm test
 
       # Step 8: Create and publish a changeset
-      - name: Create Release Pull Request or Publish to npm
+      - name: Bump version and create changelog
         id: changesets
         uses: changesets/action@v1
         with:
-          # This expects you to have a script called `release` in your
-          # root package.json.
-          publish: pnpm --filter wasm-forge publish --access public --no-git-checks
+          version: pnpm changeset version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Setup .npmrc file for publishing
+        if: steps.changesets.outputs.published == 'true'
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.published == 'true'
+        run: pnpm --filter wasm-forge publish --access public --no-git-checks
+
+      - name: Delete .npmrc file
+        if: always() && steps.changesets.outputs.published == 'true'
+        run: rm .npmrc
