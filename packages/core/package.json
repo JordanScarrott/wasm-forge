@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "@wasm-forge/levenshtein": "workspace:*",
-    "@wasm-forge/trie": "workspace:*"
+    "@wasm-forge/trie": "workspace:*",
+    "@wasm-forge/merge-sort": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
