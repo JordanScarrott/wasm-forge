@@ -81,19 +81,13 @@ This project uses [Changesets](https://github.com/changesets/changesets) to mana
 
 ### Stage 1: Creating a Changeset
 
-After you have made your code changes on your feature branch, you need to declare your intent to release by creating a "changeset." This is a small file that captures your intended version bump and a summary of the changes.
+After making your code changes and before committing, you must run `pnpm changeset` to generate a release note for your changes. Commit the resulting markdown file along with your code.
 
-To create a changeset, run the following command at the root of the project:
-```bash
-pnpm changeset
-```
 This command will launch an interactive CLI that guides you through the following prompts:
 
 1.  **Select Packages**: It will automatically detect which packages have been modified and ask you to confirm. Use the arrow keys and the spacebar to select the packages you intend to release.
 2.  **Choose Version Type**: For each selected package, you will be prompted to choose a version bump type (`major`, `minor`, or `patch`), following the [Semantic Versioning](https://semver.org/) standard.
 3.  **Write a Summary**: Finally, you will be asked to write a concise summary of the changes. This summary will be automatically added to the `CHANGELOG.md` file when the release is published, so make it informative for the end-users.
-
-Once you complete the prompts, a new markdown file will be generated in the `.changeset` directory. This file must be committed to your feature branch along with your code.
 
 ### Stage 2: The Release PR
 
